@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Test_Magenest::magenest"
+                title="Magenest Test"
+                module="Test_Magenest"
+                sortOrder="50"
+                resource="Test_Magenest::magenest"
+        />
+
+        <add
+                id="Test_Magenest::test"
+                title="Magenest Test"
+                module="Test_Magenest"
+                sortOrder="50"
+                parent="Test_Magenest::magenest"
+                action="magenest/test/test"
+                resource="Test_Magenest::test"
+        />
+
+
+        <add id="Test_Magenest::movie_configuration"
+             title="Configuration"
+             module="Test_Magenest"
+             sortOrder="200"
+             parent="Test_Magenest::magenest"
+             action="admin/system_config/edit/section/magenesttest/"
+             resource="Test_Magenest::movie_configuration"/>
+    </menu>
+</config>

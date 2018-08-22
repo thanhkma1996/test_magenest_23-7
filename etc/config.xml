@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magenest>
+            <testpage>
+               <member_config></member_config>
+                <part_time></part_time>
+                <product_name></product_name>
+            </testpage>
+        </magenest>
+    </default>
+</config>

@@ -1,0 +1,71 @@
+<?php
+$parttime = $block->getpart();
+?>
+
+ID :<select name="member" id="memberpart" style="width=100px;">
+    <option value="" selected>---Please your choose---</option>
+    <?php
+    foreach ($parttime as $member) {
+        echo "<option value=" . $member->getMemberId() . ">" . $member->getMemberId() . "</option>";
+    }
+    ?>
+</select>
+<br>
+
+    <form method="post" action="<?php echo $block->getUrl('magenest/part/edit'); ?>"
+          id="form-validate">
+        <table>
+            <title>Info Member</title>
+            Name : <input type="text" id="name" name="name"><br/>
+
+            Address : <input type="text" id="address" name="address"><br/>
+
+            Phone : <input type="text" id="phone" name="phone"><br/>
+
+           Created Time :<input type="date" id="create_time" name="create_time"><br/>
+
+            Updated Time : <input type="date" id="updated_time" name="updated_time"><br/>
+
+            <input type="submit" name="edit" id="edit" value="Edit"><br/>
+            <input type="text" id="member_id" name="member_id" hidden><br/>
+        </table>
+    </form>
+
+
+
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ], function ($, modal) {
+
+        $('#memberpart').change(function () {
+            var url = '<?php  echo $block->getUrl('magenest/part/infor');?>';
+            var id = $('#memberpart').val();
+
+            var param = {
+                member_id: id
+            };
+
+            $.ajax({
+                showLoader: true,
+                url: url,
+                data: param,
+                type: "POST",
+                dataType: 'json'
+            }).done(function (data) {
+
+                $('#member_id').attr('value', data.member_id);
+                $('#name').attr('value', data.name);
+                $('#address').attr('value', data.address);
+                $('#phone').attr('value', data.phone);
+                $('#create_time').attr('value', data.create_time);
+                $('#updated_time').attr('value', data.updated_time);
+
+            })
+        });
+
+
+    })
+
+</script>
